@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inovexa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            background: #4b4b6e;
+            color: #EDEDED;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+            /* pushes footer down */
+        }
+
+        /* Navbar */
+        nav {
+            height: 70px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-sizing: border-box;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+
+        nav.scrolled {
+            background: #2A2A40;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Logo */
+        .brand {
+            font-family: 'Poppins', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #EDEDED;
+            letter-spacing: 1px;
+        }
+
+        .brand span {
+            color: #6C63FF;
+            text-shadow: 0 0 8px #6C63FF;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #EDEDED;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #00C9A7;
+        }
+
+        /* Sections */
+        section {
+            height: 100vh;
+            padding: 120px 50px 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            scroll-margin-top: 80px;
+        }
+
+        section::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        section h2,
+        section p,
+        section button {
+            position: relative;
+            z-index: 1;
+        }
+
+        section h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        section p {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 20px;
+            line-height: 1.6;
+        }
+
+        button {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            background: #00C9A7;
+            color: #1E1E2E;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background: #6C63FF;
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        /* Backgrounds */
+        #home {
+            background-image: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80');
+        }
+
+        #features {
+            background-image: url('https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1600&q=80');
+        }
+
+        #about {
+            background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1600&q=80');
+        }
+
+        #contact {
+            background-image: url('https://images.unsplash.com/photo-1588702547919-26089e690ecc?auto=format&fit=crop&w=1600&q=80');
+        }
+
+        /* ✅ Responsive Footer */
+        footer {
+            background: linear-gradient(145deg, #0c0c0c, #1a1a1a);
+            color: #ccc;
+            padding: 40px 20px;
+            box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.6);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #EDEDED;
+            text-shadow: 0 0 8px rgba(108, 99, 255, 0.8);
+        }
+
+        .footer-logo span {
+            color: #6C63FF;
+            text-shadow: 0 0 15px #6C63FF, 0 0 30px #6C63FF;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .social-icons a {
+            color: #555;
+            font-size: 24px;
+            transition: transform 0.5s ease, color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            transform: rotateY(360deg) translateY(-6px) scale(1.1);
+        }
+
+        .social-icons a.facebook:hover {
+            color: #1877F2;
+        }
+
+        .social-icons a.twitter:hover {
+            color: #1DA1F2;
+        }
+
+        .social-icons a.instagram:hover {
+            color: #E1306C;
+        }
+
+        .social-icons a.linkedin:hover {
+            color: #0077B5;
+        }
+
+        .social-icons a.github:hover {
+            color: #fff;
+        }
+
+        .social-icons a.youtube:hover {
+            color: #FF0000;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .footer-links a {
+            color: #6C63FF;
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #00C9A7;
+            text-shadow: 0 0 8px #00C9A7;
+        }
+
+        .copyright {
+            font-size: 13px;
+            color: #888;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .footer-container {
+                flex-direction: row;
+                justify-content: space-between;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav id="navbar">
+        <div class="brand">Inove<span>X</span>a</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Sections -->
+        <section id="home">
+            <h2>Welcome to Inovexa</h2>
+            <p>Innovating digital experiences with modern design and technology.</p>
+            <button>Get Started</button>
+        </section>
+
+        <section id="features">
+            <h2>Our Features</h2>
+            <p>Seamless performance, modern design, and future-ready technology built for growth.</p>
+            <button>Explore Features</button>
+        </section>
+
+        <section id="about">
+            <h2>About Us</h2>
+            <p>Inovexa is a passionate team of developers and designers creating stunning digital solutions.</p>
+            <button>Learn More</button>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>Let’s connect and build something amazing together.</p>
+            <button>Get in Touch</button>
+        </section>
+    </main>
+
+    <!-- ✅ Responsive Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="social-icons">
+                <a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="linkedin"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="github"><i class="fab fa-github"></i></a>
+                <a href="#" class="youtube"><i class="fab fa-youtube"></i></a>
+            </div>
+
+            <h2 class="footer-logo">Inove<span>X</span>a</h2>
+
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#features">Features</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+
+        <p class="copyright">© 2025 InoveXa. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const navbar = document.getElementById("navbar");
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.classList.remove("scrolled");
+            }
+        });
+    </script>
+</body>
+
+</html>
